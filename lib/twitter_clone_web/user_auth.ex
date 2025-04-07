@@ -1,4 +1,8 @@
 defmodule TwitterCloneWeb.UserAuth do
+  @moduledoc """
+  Provides functions for authenticating users and managing login sessions.
+  """
+
   use TwitterCloneWeb, :verified_routes
 
   import Plug.Conn

@@ -1,4 +1,7 @@
 defmodule TwitterClone.Accounts.UserNotifier do
+  @moduledoc """
+  Sends notification emails related to user account actions.
+  """
   import Swoosh.Email
 
   alias TwitterClone.Mailer

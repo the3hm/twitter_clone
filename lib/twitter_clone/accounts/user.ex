@@ -1,4 +1,8 @@
 defmodule TwitterClone.Accounts.User do
+  @moduledoc """
+  Defines the user schema and functions related to user data management.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

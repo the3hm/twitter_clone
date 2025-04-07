@@ -14,21 +14,20 @@ defmodule TwitterCloneWeb.TweetController do
     render(conn, :new, changeset: changeset)
   end
 
-def create(conn, %{"tweet" => tweet_params}) do
-  user = conn.assigns.current_user
-  tweet_params = Map.put(tweet_params, "user_id", user.id)
+  def create(conn, %{"tweet" => tweet_params}) do
+    user = conn.assigns.current_user
+    tweet_params = Map.put(tweet_params, "user_id", user.id)
 
-  case Tweets.create_tweet(tweet_params) do
-    {:ok, tweet} ->
-      conn
-      |> put_flash(:info, "Tweet created successfully.")
-      |> redirect(to: ~p"/tweets/#{tweet}")
+    case Tweets.create_tweet(tweet_params) do
+      {:ok, tweet} ->
+        conn
+        |> put_flash(:info, "Tweet created successfully.")
+        |> redirect(to: ~p"/tweets/#{tweet}")
 
-    {:error, %Ecto.Changeset{} = changeset} ->
-      render(conn, :new, changeset: changeset)
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, :new, changeset: changeset)
+    end
   end
-end
-
 
   def show(conn, %{"id" => id}) do
     tweet = Tweets.get_tweet!(id)

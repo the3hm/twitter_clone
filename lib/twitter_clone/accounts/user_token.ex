@@ -1,4 +1,8 @@
 defmodule TwitterClone.Accounts.UserToken do
+  @moduledoc """
+  Handles generation and validation of secure user tokens for authentication.
+  """
+
   use Ecto.Schema
   import Ecto.Query
   alias TwitterClone.Accounts.UserToken

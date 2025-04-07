@@ -17,22 +17,20 @@ defmodule TwitterCloneWeb.Router do
     plug :accepts, ["json"]
   end
 
-# Public read-only tweet viewing
-scope "/", TwitterCloneWeb do
-  pipe_through :browser
+  # Public read-only tweet viewing
+  scope "/", TwitterCloneWeb do
+    pipe_through :browser
 
-  get "/tweets", TweetController, :index
-  get "/tweets/:id", TweetController, :show
-end
+    get "/tweets", TweetController, :index
+    get "/tweets/:id", TweetController, :show
+  end
 
-# Authenticated-only tweet posting
-scope "/", TwitterCloneWeb do
-  pipe_through [:browser, :require_authenticated_user]
+  # Authenticated-only tweet posting
+  scope "/", TwitterCloneWeb do
+    pipe_through [:browser, :require_authenticated_user]
 
-  resources "/tweets", TweetController, except: [:index, :show]
-end
-
-
+    resources "/tweets", TweetController, except: [:index, :show]
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", TwitterCloneWeb do

@@ -12,8 +12,14 @@
 
 alias TwitterClone.{Accounts, Tweets}
 
-user = Accounts.get_user_by_email("test@example.com") || 
-       Accounts.register_user(%{email: "test@example.com", password: "password1234", password_confirmation: "password123"}) |> elem(1)
+user =
+  Accounts.get_user_by_email("test@example.com") ||
+    Accounts.register_user(%{
+      email: "test@example.com",
+      password: "password1234",
+      password_confirmation: "password123"
+    })
+    |> elem(1)
 
 Tweets.create_tweet(%{content: "Hello world!", user_id: user.id})
 Tweets.create_tweet(%{content: "Another tweet!", user_id: user.id})

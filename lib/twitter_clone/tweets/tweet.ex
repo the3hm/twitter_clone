@@ -1,11 +1,16 @@
 defmodule TwitterClone.Tweets.Tweet do
+  @moduledoc """
+  Represents tweets and contains logic for creating and querying tweets.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "tweets" do
     field :content, :string
 
-    belongs_to :user, TwitterClone.Accounts.User  # 👈 ADD THIS
+    # 👈 ADD THIS
+    belongs_to :user, TwitterClone.Accounts.User
 
     timestamps(type: :utc_datetime)
   end
@@ -13,7 +18,8 @@ defmodule TwitterClone.Tweets.Tweet do
   @doc false
   def changeset(tweet, attrs) do
     tweet
-    |> cast(attrs, [:content, :user_id])  # 👈 include :user_id here too
+    # 👈 include :user_id here too
+    |> cast(attrs, [:content, :user_id])
     |> validate_required([:content, :user_id])
   end
 end
