@@ -1,0 +1,15 @@
+<.header>
+  Tweet {@tweet.id}
+  <:subtitle>This is a tweet record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/tweets/#{@tweet}/edit"}>
+      <.button>Edit tweet</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Content">{@tweet.content}</:item>
+</.list>
+
+<.back navigate={~p"/tweets"}>Back to tweets</.back>

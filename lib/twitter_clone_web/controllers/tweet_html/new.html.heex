@@ -1,0 +1,8 @@
+<.header>
+  New Tweet
+  <:subtitle>Use this form to manage tweet records in your database.</:subtitle>
+</.header>
+
+<.tweet_form changeset={@changeset} action={~p"/tweets"} />
+
+<.back navigate={~p"/tweets"}>Back to tweets</.back>

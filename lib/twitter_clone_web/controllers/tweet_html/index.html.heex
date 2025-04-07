@@ -1,0 +1,23 @@
+<.header>
+  Listing Tweets
+  <:actions>
+    <.link href={~p"/tweets/new"}>
+      <.button>New Tweet</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="tweets" rows={@tweets} row_click={&JS.navigate(~p"/tweets/#{&1}")}>
+  <:col :let={tweet} label="Content">{tweet.content}</:col>
+  <:action :let={tweet}>
+    <div class="sr-only">
+      <.link navigate={~p"/tweets/#{tweet}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/tweets/#{tweet}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={tweet}>
+    <.link href={~p"/tweets/#{tweet}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
